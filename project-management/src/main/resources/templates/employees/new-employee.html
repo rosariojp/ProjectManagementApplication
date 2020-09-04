@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts :: pageHeader"></head>
+<head th:replace="layouts :: header"></head>
 <body>
-	<nav th:replace="layouts :: pageNavbar"></nav>
+	<nav th:replace="layouts :: navbar"></nav>
 	<div class="container">
 		<form action="/employees/save" th:object="${employee}" method="POST">
 			<input type="text" placeholder="First Name" th:field="${employee.firstName}"/>
