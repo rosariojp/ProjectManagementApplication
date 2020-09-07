@@ -20,7 +20,7 @@ public class Employee {
 	
 	@ManyToOne
 	@JoinColumn(name="project_id")
-	private Project theProject;
+	private Project project;
 	
 	public Employee() {
 		

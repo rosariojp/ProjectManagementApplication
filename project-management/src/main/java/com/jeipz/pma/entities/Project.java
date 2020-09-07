@@ -21,7 +21,7 @@ public class Project {
 	
 	private String description;
 
-	@OneToMany(mappedBy = "theProject")
+	@OneToMany(mappedBy = "project")
 	private List<Employee> employees;
 	
 	public Project() {
