@@ -1,8 +1,6 @@
 package com.jeipz.pma.controllers;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,8 +26,6 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String displayHomePage(Model model) throws JsonProcessingException {
-		
-		Map<String, Object> map = new HashMap<>();
 		
 		List<Project> projects = proRepo.findAll();
 		model.addAttribute("projectsList", projects);
