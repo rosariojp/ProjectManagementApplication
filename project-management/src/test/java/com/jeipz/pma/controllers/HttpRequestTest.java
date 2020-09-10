@@ -24,7 +24,7 @@ public class HttpRequestTest {
 	@Test
 	public void homePageReturnsVersionNumberCorrectly_thenSuccess() {
 		String renderedHtml = this.restTemplate.getForObject("http://localhost:" + port + "/", String.class);
-		assertTrue(renderedHtml.contains("4.4.5"));
+		assertTrue(renderedHtml.contains("4.4.4"));
 	}
 	
 }
