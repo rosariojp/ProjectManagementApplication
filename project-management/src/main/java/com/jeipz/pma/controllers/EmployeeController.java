@@ -11,17 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jeipz.pma.dao.EmployeeRepository;
 import com.jeipz.pma.entities.Employee;
+import com.jeipz.pma.services.EmployeeService;
 
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
 
 	@Autowired
-	EmployeeRepository empRepo;
+	EmployeeService	empService;
 	
 	@GetMapping
 	public String displayEmployees(Model model) {
-		List<Employee> employees = empRepo.findAll();
+		List<Employee> employees = empService.getAll();
 		model.addAttribute("employeesList", employees);
 		return "employees/list-employees";
 	}
@@ -35,7 +36,7 @@ public class EmployeeController {
 	
 	@PostMapping("/save")
 	public String createEmployee(Employee employee, Model model) {
-		empRepo.save(employee);
+		empService.save(employee);
 		return "redirect:/employees/new";
 	}
 	
