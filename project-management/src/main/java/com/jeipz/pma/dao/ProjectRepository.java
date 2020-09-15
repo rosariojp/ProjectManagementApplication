@@ -3,12 +3,12 @@ package com.jeipz.pma.dao;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.jeipz.pma.dto.ChartData;
 import com.jeipz.pma.entities.Project;
 
-public interface ProjectRepository extends CrudRepository<Project, Long> {
+public interface ProjectRepository extends PagingAndSortingRepository<Project, Long> {
 
 	@Override
 	public List<Project> findAll();
