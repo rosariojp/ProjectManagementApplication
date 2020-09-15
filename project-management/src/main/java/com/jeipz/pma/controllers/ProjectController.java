@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jeipz.pma.entities.Employee;
 import com.jeipz.pma.entities.Project;
@@ -44,6 +45,15 @@ public class ProjectController {
 	public String createProject(Project project, Model model) {
 		proService.save(project);
 		return "redirect:/projects";
+	}
+	
+	@GetMapping("/update")
+	public String displayProjectUpdateForm(@RequestParam("id") long id, Model model) {
+		Project project = proService.findByProjectId(id);
+		List<Employee> employees = empService.getAll();
+		model.addAttribute("project", project);
+		model.addAttribute("allEmployees", employees);
+		return "projects/new-project";
 	}
 	
 }
