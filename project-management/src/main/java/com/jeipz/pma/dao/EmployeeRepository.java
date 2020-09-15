@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import com.jeipz.pma.dto.EmployeeProject;
 import com.jeipz.pma.entities.Employee;
 
+@RepositoryRestResource(collectionResourceRel = "apiemployees", path = "apiemployees")
 public interface EmployeeRepository extends PagingAndSortingRepository<Employee, Long> {
 
 	@Override
