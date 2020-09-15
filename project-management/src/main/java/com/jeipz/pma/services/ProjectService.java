@@ -30,5 +30,9 @@ public class ProjectService {
 	public Project findByProjectId(long id) {
 		return proRepo.findByProjectId(id);
 	}
+
+	public void delete(Project project) {
+		proRepo.delete(project);
+	}
 	
 }

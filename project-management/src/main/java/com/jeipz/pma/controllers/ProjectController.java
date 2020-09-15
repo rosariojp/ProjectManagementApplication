@@ -56,4 +56,10 @@ public class ProjectController {
 		return "projects/new-project";
 	}
 	
+	@GetMapping("/delete")
+	public String deleteProject(@RequestParam("id") long id, Model model) {
+		Project project = proService.findByProjectId(id);
+		proService.delete(project);
+		return "redirect:/projects";
+	}
 }
