@@ -11,7 +11,7 @@ for (var i = 0; i < arrayLength; i++) {
 }
 
 // For a Pie Chart
-new Chart(document.getElementById("myPieChart"), {
+new Chart(document.getElementById("pieChart"), {
 	type : 'pie',
 	data : {
 		labels : labelData,
