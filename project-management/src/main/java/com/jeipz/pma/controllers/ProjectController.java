@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jeipz.pma.dto.TimeChartData;
 import com.jeipz.pma.entities.Employee;
 import com.jeipz.pma.entities.Project;
 import com.jeipz.pma.services.EmployeeService;
@@ -69,6 +72,18 @@ public class ProjectController {
 		Project project = proService.findByProjectId(id);
 		proService.delete(project);
 		return "redirect:/projects";
+	}
+	
+	@GetMapping("/timelines")
+	public String displayProjectTimelinesForm(Model model) throws JsonProcessingException {
+		List<TimeChartData> timelineData = proService.getTimeData();
+		
+		// Convert timeline Data to json structure for use in javascript
+		ObjectMapper objectMapper = new ObjectMapper();
+		String jsonTimelineString = objectMapper.writeValueAsString(timelineData);		
+		model.addAttribute("projectTimeList", jsonTimelineString);
+		
+		return "projects/project-timelines";
 	}
 	
 }
