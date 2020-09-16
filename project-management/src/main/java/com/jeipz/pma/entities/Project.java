@@ -37,7 +37,6 @@ public class Project {
 	private String stage;
 	
 	@NotBlank(message = "Must give a project description")
-	@Size(min = 4, max = 50, message = "Must be at least 4 character long")
 	private String description;
 
 	@NotEmpty(message = "Must select at least 1 employee assignee")
