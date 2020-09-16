@@ -1,6 +1,7 @@
 package com.jeipz.pma.entities;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -46,6 +48,12 @@ public class Project {
 	           inverseJoinColumns = @JoinColumn(name = "employee_id"))
 	@JsonIgnore
 	private List<Employee> employees;
+	
+	@NotNull(message = "Date should not be empty")
+	private Date startDate;
+	
+	@NotNull(message = "Date should not be empty")
+	private Date endDate;
 	
 	public Project() {
 		
@@ -102,6 +110,22 @@ public class Project {
 			employees = new ArrayList<>();
 		}
 		employees.add(employee);		
+	}
+
+	public Date getStartDate() {	
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 	
 }

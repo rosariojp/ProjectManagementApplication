@@ -45,6 +45,27 @@
 					  th:errors="${project.employees}">
 				</span>
 			</div>
+
+			Project Start Date:			
+			<div class="form-group row">
+				<input id="dp3" type="text" class="mb-4 col-2 col-xs-4" value="Start Date" th:field="${project.startDate}"/>
+				<span style="color:red" th:if="${#fields.hasErrors('startDate')}"
+					  th:errors="${project.startDate}">
+				</span>
+			</div>
+			
+			Project End Date:
+			<div class="form-group row">
+				<input id="dp4" type="text" class="mb-4 col-2 col-xs-4" value="End Date" th:field="${project.endDate}"/>
+				<span style="color:red" th:if="${#fields.hasErrors('endDate')}"
+					  th:errors="${project.endDate}">
+				</span>
+			</div>
+			
+			<script type="text/javascript">
+				$('#dp3').datepicker();
+				$('#dp4').datepicker();
+			</script>
 			
 			<div class="form-group row">
 				<button class="bt btn-info col-2" type="submit">Enter Project</button>
