@@ -38,10 +38,9 @@ public class HomeController {
 		
 		List<ChartData> projectData = proService.getProjectStatus();
 
-		// Convert project Data to jason structure for use in javascript
+		// Convert project Data to json structure for use in javascript
 		ObjectMapper objectMapper = new ObjectMapper();
 		String jsonString = objectMapper.writeValueAsString(projectData);
-		
 		model.addAttribute("projectStatusCount", jsonString);
 		
 		List<EmployeeProject> employeesProjectCount = empService.getEmployeeProjects();
