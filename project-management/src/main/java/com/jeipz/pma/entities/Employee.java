@@ -29,14 +29,14 @@ public class Employee {
 	private long employeeId;
 
 	@NotBlank(message = "Must give a first name")
-	@Size(min = 2, max = 50)
+	@Size(min = 2, max = 50, message = "Size must be between 2 and 50")
 	private String firstName;
 	
 	@NotBlank(message = "Must give a last name")
-	@Size(min = 1, max = 50)
+	@Size(min = 1, max = 50, message = "Size must be between 1 and 50")
 	private String lastName;
 	
-	@NotBlank
+	@NotBlank(message = "Must not be blank")
 	@Email(message = "Must give a valid email address")
 	@UniqueValue
 	private String email;
