@@ -17,7 +17,8 @@ project_id BIGINT NOT NULL DEFAULT nextval('project_seq') PRIMARY KEY,
 name VARCHAR(100) NOT NULL,
 stage VARCHAR(100) NOT NULL,
 description VARCHAR(500) NOT NULL
-
+start_date DATE,
+end_date DATE
 );
 
 
