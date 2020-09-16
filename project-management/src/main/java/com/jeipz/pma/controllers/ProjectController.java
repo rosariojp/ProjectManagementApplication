@@ -2,9 +2,12 @@ package com.jeipz.pma.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,13 +45,18 @@ public class ProjectController {
 	}
 	
 	@PostMapping("/save")
-	public String createProject(Project project, Model model) {
+	public String createProject(Model model, @Valid Project project, Errors errors) {
+		if (errors.hasErrors()) {
+			List<Employee> employees = empService.getAll();
+			model.addAttribute("allEmployees", employees);
+			return "projects/new-project";
+		}
 		proService.save(project);
 		return "redirect:/projects";
 	}
 	
 	@GetMapping("/update")
-	public String displayProjectUpdateForm(@RequestParam("id") long id, Model model) {
+	public String displayProjectUpdateForm(Model model, @RequestParam("id") long id) {
 		Project project = proService.findByProjectId(id);
 		List<Employee> employees = empService.getAll();
 		model.addAttribute("project", project);
@@ -57,9 +65,10 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/delete")
-	public String deleteProject(@RequestParam("id") long id, Model model) {
+	public String deleteProject(Model model, @RequestParam("id") long id) {
 		Project project = proService.findByProjectId(id);
 		proService.delete(project);
 		return "redirect:/projects";
 	}
+	
 }
