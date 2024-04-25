@@ -1,4 +1,4 @@
-# ProjectManagementApplication
+# Project Manager Application
 
 Features:
 - Add/Update/Delete Employee
